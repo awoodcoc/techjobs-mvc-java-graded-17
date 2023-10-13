@@ -11,6 +11,10 @@
   <h2 class = "centered">View Jobs By Category</h2>
 </div>
 
+
+<!-- columns here refers to columnChoices in ListController.java, a hashmap of strings
+     The column.value is the value in the key value pair in that hashmap
+     Refer to lines 25 to 29. -->
 <table class="centeredTable">
   <tr>
     <th:block th:each="column : ${columns}">
@@ -20,8 +24,25 @@
   <tr>
     <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-    <td></td> <!-- Feel free to remove or modify this element if necessary. -->
 
+    <!--Corresponds to line 52 in ListController: if (column.equals("all")) -->
+    <td>
+      <ul>
+        <li>
+          <a href="/list/jobs?column=all">All Jobs</a>
+        </li>
+      </ul>
+    </td>
+
+    <!-- tableChoices here refers to the tableChoices hashmap in ListController
+         The category.key here refers to the string value in tableChoices
+         ("employer", "coreCompetency"
+         The category.value here refers an array list of the objects in the JobData object
+         (Employer, CoreCompetency etc.)
+         item is the various values within each category (for example, the actual list of
+         cities under Location).
+         The link is created dynamically within the <a> tag.
+     -->
     <td th:each="category : ${tableChoices}">
       <ul>
         <li th:each="item : ${category.value}">
